@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>🌈 LE SITE LE PLUS NORMAL D’INTERNET 🌈</title>
+<style>
+  html { overflow-x: hidden; }
+  html.disco { animation: disco 1s linear infinite; }
+
+  body {
+    margin: 0;
+    font-family: "Comic Sans MS", "Comic Neue", cursive;
+    color: #111;
+    background: linear-gradient(135deg, #ff0040, #ff9900, #ffee00, #00d94a, #00d5ff, #3d4dff, #b300ff, #ff0040);
+    background-size: 400% 400%;
+    animation: fond 8s ease infinite;
+  }
+  body.roll { animation: roule 1s; }
+
+  h1 {
+    text-align: center;
+    font-size: clamp(1.8rem, 6vw, 3.4rem);
+    margin: 24px 12px 6px;
+    color: #fff;
+    text-shadow: 3px 3px 0 #000, -2px -2px 0 #ff00aa;
+    animation: tremble 1.2s ease-in-out infinite;
+  }
+  .sous-titre { text-align: center; color: #fff; text-shadow: 2px 2px 0 #000; margin: 0 12px 18px; font-size: 1.2rem; }
+
+  .bande { overflow: hidden; white-space: nowrap; background: #000; color: #39ff14; font-weight: bold; padding: 8px 0; }
+  .bande span { display: inline-block; padding-left: 100%; animation: defile 22s linear infinite; }
+
+  .carte {
+    max-width: 700px;
+    margin: 26px auto;
+    padding: 18px 22px;
+    background: #fffbe0;
+    border: 4px dashed #ff2fa0;
+    box-shadow: 8px 8px 0 #000;
+    transform: rotate(-1deg);
+  }
+  .carte:nth-of-type(even) { transform: rotate(1.4deg); }
+  .carte h2 { margin: 0 0 10px; font-size: 1.5rem; }
+
+  button {
+    font: inherit;
+    font-weight: bold;
+    padding: 10px 18px;
+    background: #ffee00;
+    border: 3px solid #000;
+    box-shadow: 4px 4px 0 #000;
+    cursor: pointer;
+  }
+  button:active { transform: translate(3px, 3px); box-shadow: 1px 1px 0 #000; }
+  button:focus-visible { outline: 3px solid #0044ff; outline-offset: 3px; }
+
+  .doge { position: relative; height: 200px; font-size: 5rem; text-align: center; line-height: 200px; }
+  .mot { position: absolute; font-size: 1.15rem; font-weight: bold; line-height: 1; }
+
+  #feu { font-size: 2rem; min-height: 2.6rem; }
+  #feu span { display: inline-block; animation: flamme .6s ease-in-out infinite; }
+
+  .barre { height: 22px; border: 3px solid #000; background: #fff; }
+  #progres { height: 100%; width: 0; background: repeating-linear-gradient(45deg, #00c800, #00c800 10px, #7dff7d 10px, #7dff7d 20px); }
+
+  #reponse { font-size: 1.3rem; min-height: 1.8em; margin: 12px 0 0; font-weight: bold; }
+
+  /* Clippy */
+  #clippy { position: fixed; right: 12px; bottom: 12px; z-index: 30; max-width: 240px; text-align: right; cursor: pointer; }
+  #bulle { display: inline-block; background: #ffffcc; border: 2px solid #000; border-radius: 10px; padding: 8px 12px; font-size: .95rem; text-align: left; }
+  #clippy .perso { display: block; font-size: 3rem; }
+
+  /* Fausses fenêtres d’erreur */
+  .fenetre { position: fixed; z-index: 60; width: 270px; background: #c0c0c0; border: 3px outset #fff; box-shadow: 4px 4px 0 #000; padding: 3px; font-family: Arial, sans-serif; }
+  .fenetre .titre { background: linear-gradient(90deg, #000080, #1084d0); color: #fff; padding: 3px 6px; font-weight: bold; font-size: .9rem; }
+  .fenetre p { margin: 12px 8px; font-size: .95rem; }
+  .fenetre button { font-family: Arial, sans-serif; font-weight: normal; padding: 3px 14px; margin: 0 4px 8px; background: #c0c0c0; border: 2px outset #fff; box-shadow: none; }
+
+  .traine { position: fixed; pointer-events: none; z-index: 50; font-size: 20px; animation: tombe .9s forwards; }
+  .confetti { position: fixed; top: -40px; pointer-events: none; z-index: 40; font-size: 28px; animation: pluie 2s linear forwards; }
+
+  footer { text-align: center; color: #fff; text-shadow: 2px 2px 0 #000; padding: 20px 12px 120px; }
+  a { color: #0000ee; font-weight: bold; }
+
+  @keyframes fond { 0% { background-position: 0 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0 50%; } }
+  @keyframes defile { to { transform: translateX(-100%); } }
+  @keyframes tremble { 0%, 100% { transform: rotate(-2deg) scale(1); } 50% { transform: rotate(2deg) scale(1.05); } }
+  @keyframes roule { to { transform: rotate(360deg); } }
+  @keyframes flamme { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-7px) scale(1.2); } }
+  @keyframes tombe { to { transform: translateY(60px) rotate(180deg); opacity: 0; } }
+  @keyframes pluie { to { transform: translateY(110vh) rotate(720deg); } }
+  @keyframes disco { to { filter: hue-rotate(360deg); } }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bande"><span>🚧 SITE EN CONSTRUCTION DEPUIS 1999 🚧 ★ Meilleur affichage en 800×600 avec Internet Explorer 6 ★ Ceci n’est pas un site ★ Aucun hamster n’a été maltraité ★ It’s over 9000 ★ Pensez à sauvegarder avec une disquette 💾 ★</span></div>
+
+<h1>🌈 BIENVENUE SUR LE SITE LE PLUS NORMAL D’INTERNET 🌈</h1>
+<p class="sous-titre">Ici, tout est parfaitement sérieux. 🧐</p>
+
+<section class="carte">
+  <h2>🚧 En construction 🚧</h2>
+  <p>Tu es le visiteur n° <strong id="compteur">9001</strong>. C’est plus de 9000 !</p>
+  <p>Ce site contient des secrets. Essaie le code que tout le monde connaît : ↑ ↑ ↓ ↓ ← → ← → B A</p>
+</section>
+
+<section class="carte">
+  <h2>🐕 Le Doge approuve</h2>
+  <div class="doge" aria-label="Un doge approuve ce site">
+    🐕
+    <span class="mot" style="left:8%; top:10%; color:#d0006f">wow</span>
+    <span class="mot" style="left:58%; top:18%; color:#0077ff">such site</span>
+    <span class="mot" style="left:4%; top:72%; color:#009900">much références</span>
+    <span class="mot" style="left:56%; top:78%; color:#ff6a00">very goofy</span>
+  </div>
+</section>
+
+<section class="carte">
+  <h2>🔥 This is fine 🔥</h2>
+  <p>🐶☕ « Tout va bien. »</p>
+  <div id="feu" aria-live="polite"><span>🔥</span><span>🔥</span><span>🔥</span></div>
+  <button type="button" id="plusDeFeu">Ajouter du feu</button>
+</section>
+
+<section class="carte">
+  <h2>🎱 La boule magique (version Kaamelott)</h2>
+  <button type="button" id="boule">Poser une question à la boule</button>
+  <p id="reponse" aria-live="polite"></p>
+</section>
+
+<section class="carte">
+  <h2>🧨 Ne clique surtout pas</h2>
+  <button type="button" id="chaos">NE PAS CLIQUER</button>
+</section>
+
+<section class="carte">
+  <h2>🕹️ Mini-jeux totalement inutiles</h2>
+  <p><button type="button" id="respect">F</button> Respects payés : <strong id="nbF">0</strong> (tu peux aussi appuyer sur la touche F)</p>
+  <p><button type="button" id="bourse">Investir toutes mes économies</button> <span id="verdict" aria-live="polite"></span></p>
+</section>
+
+<section class="carte">
+  <h2>📥 Téléchargement de plus de RAM</h2>
+  <div class="barre"><div id="progres"></div></div>
+  <p id="texteRam">Téléchargement…</p>
+</section>
+
+<section class="carte">
+  <h2>🎁 Offre exceptionnelle</h2>
+  <p><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener">Clique ici pour gagner 1 000 000 € (promis, aucun piège)</a></p>
+</section>
+
+<footer>Fait avec ❤️, du café et zéro plan. ☕<br>Aucun canard n’a été blessé. 🦆</footer>
+
+<div id="clippy" role="button" tabindex="0" aria-label="Assistant : cliquer pour une nouvelle astuce">
+  <span id="bulle"></span>
+  <span class="perso">📎</span>
+</div>
+
+<script>
+  const $ = (s) => document.querySelector(s);
+  const hasard = (liste) => liste[Math.floor(Math.random() * liste.length)];
+
+  /* Petit son de pièce façon console 8 bits */
+  let audio;
+  function bip(f1, f2) {
+    try {
+      audio = audio || new (window.AudioContext || window.webkitAudioContext)();
+      [f1, f2].forEach((f, i) => {
+        const o = audio.createOscillator();
+        const g = audio.createGain();
+        o.type = "square";
+        o.frequency.value = f;
+        g.gain.value = 0.05;
+        o.connect(g);
+        g.connect(audio.destination);
+        o.start(audio.currentTime + i * 0.09);
+        o.stop(audio.currentTime + i * 0.09 + 0.09);
+      });
+    } catch (e) {}
+  }
+
+  /* Compteur de visiteurs qui s’emballe */
+  let n = 9001;
+  setInterval(() => { n += Math.floor(Math.random() * 3); $("#compteur").textContent = n; }, 1500);
+
+  /* Traînée d’emojis derrière la souris */
+  let dernier = 0;
+  document.addEventListener("pointermove", (e) => {
+    const t = Date.now();
+    if (t - dernier < 60) return;
+    dernier = t;
+    const s = document.createElement("span");
+    s.className = "traine";
+    s.textContent = hasard(["⭐", "🍌", "🐸", "💀", "🔥", "🦆", "🌈", "🧀"]);
+    s.style.left = e.clientX + "px";
+    s.style.top = e.clientY + "px";
+    document.body.appendChild(s);
+    setTimeout(() => s.remove(), 900);
+  });
+
+  /* This is fine */
+  $("#plusDeFeu").addEventListener("click", () => {
+    const s = document.createElement("span");
+    s.textContent = "🔥";
+    $("#feu").appendChild(s);
+    bip(220, 180);
+  });
+
+  /* Boule magique */
+  const reponses = [
+    "C’est pas faux.",
+    "Ça dépend. Mais c’est pas faux.",
+    "Hello there.",
+    "Skill issue.",
+    "Stonks 📈",
+    "It’s over 9000 !",
+    "Oui, mais seulement un mardi.",
+    "Demande à un canard. 🦆",
+    "Je suis une boule, pas un devin.",
+    "Ceci n’est pas une réponse."
+  ];
+  $("#boule").addEventListener("click", () => { $("#reponse").textContent = "🎱 " + hasard(reponses); bip(523, 659); });
+
+  /* F pour rendre hommage */
+  let respects = 0;
+  function payerRespects() { respects++; $("#nbF").textContent = respects; bip(330, 262); }
+  $("#respect").addEventListener("click", payerRespects);
+
+  /* Bourse */
+  $("#bourse").addEventListener("click", () => {
+    $("#verdict").textContent = hasard(["📈 STONKS", "📉 Not stonks", "📈 STONKS", "💀 Plus rien. Mais c’est pas grave."]);
+    bip(784, 988);
+  });
+
+  /* Fausses fenêtres d’erreur */
+  let nbFenetres = 0;
+  function erreur() {
+    if (nbFenetres >= 6) return;
+    nbFenetres++;
+    const f = document.createElement("div");
+    f.className = "fenetre";
+    f.style.left = Math.max(5, Math.random() * (innerWidth - 300)) + "px";
+    f.style.top = Math.max(60, Math.random() * (innerHeight - 220)) + "px";
+    f.innerHTML = '<div class="titre">Erreur_fatale.exe</div><p>⚠️ Ce site a trop de style. Voulez-vous continuer à être cool ?</p><button class="ok">OK</button><button class="ok2">Aussi OK</button>';
+    f.querySelector(".ok").addEventListener("click", () => { f.remove(); nbFenetres--; });
+    f.querySelector(".ok2").addEventListener("click", () => { f.remove(); nbFenetres--; erreur(); erreur(); });
+    document.body.appendChild(f);
+  }
+
+  /* Le bouton à ne pas cliquer : barrel roll, pluie d’emojis, fenêtres */
+  $("#chaos").addEventListener("click", () => {
+    bip(988, 1319);
+    document.body.classList.add("roll");
+    setTimeout(() => document.body.classList.remove("roll"), 1000);
+    for (let i = 0; i < 25; i++) {
+      const c = document.createElement("span");
+      c.className = "confetti";
+      c.textContent = hasard(["🍌", "🦆", "💀", "🐸", "🧀", "⭐", "🥔", "🐕"]);
+      c.style.left = Math.random() * 100 + "vw";
+      c.style.animationDelay = Math.random() * 0.6 + "s";
+      document.body.appendChild(c);
+      setTimeout(() => c.remove(), 2800);
+    }
+    erreur();
+  });
+
+  /* Barre de chargement qui n’arrive jamais à 100 % */
+  let p = 0;
+  setInterval(() => {
+    p = p < 99 ? Math.min(99, p + Math.random() * 4) : 99;
+    $("#progres").style.width = p + "%";
+    $("#texteRam").textContent = p >= 99
+      ? "Téléchargement de plus de RAM… 99 % (ça arrive, promis)"
+      : "Téléchargement de plus de RAM… " + Math.floor(p) + " %";
+  }, 400);
+
+  /* Clippy, l’assistant que personne n’a demandé */
+  const astuces = [
+    "On dirait que vous essayez de lire un site. Voulez-vous de l’aide ?",
+    "Saviez-vous ? Les canards n’ont pas le wifi.",
+    "Vous avez 3 nouveaux problèmes.",
+    "Astuce : éteignez et rallumez votre vie.",
+    "C’est pas faux.",
+    "Aucun bug, que des fonctionnalités.",
+    "Hello there.",
+    "Attention : ce site est certifié 100 % sérieux."
+  ];
+  function astuce() { $("#bulle").textContent = hasard(astuces); }
+  setInterval(astuce, 7000);
+  astuce();
+  $("#clippy").addEventListener("click", astuce);
+
+  /* Clavier : touche F et code Konami (mode disco) */
+  const code = ["ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight", "b", "a"];
+  let pos = 0;
+  addEventListener("keydown", (e) => {
+    if (e.key === "f" || e.key === "F") payerRespects();
+    pos = e.key === code[pos] ? pos + 1 : (e.key === code[0] ? 1 : 0);
+    if (pos === code.length) {
+      pos = 0;
+      document.documentElement.classList.toggle("disco");
+      bip(660, 880);
+    }
+  });
+</script>
+</body>
+</html>

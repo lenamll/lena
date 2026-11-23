@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Les plus belles îles de Thaïlande</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&family=Young+Serif&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --fond: #EAF7F6;
+    --encre: #07303F;
+    --lagon: #0B7A74;
+    --ruban: #FFC93C;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--fond);
+    color: var(--encre);
+    font-family: "Outfit", Arial, sans-serif;
+    line-height: 1.55;
+  }
+
+  /* ---------- En-tête ---------- */
+  header {
+    position: relative;
+    overflow: hidden;
+    padding: 80px 24px 150px;
+    color: #fff;
+    background: linear-gradient(180deg, #07303F 0%, #0E6E7A 100%);
+  }
+
+  .titrage { max-width: 1040px; margin: 0 auto; }
+
+  h1 {
+    font-family: "Young Serif", Georgia, serif;
+    font-weight: 400;
+    font-size: clamp(2.6rem, 9vw, 5.6rem);
+    line-height: 1;
+    margin: 0 0 20px;
+    max-width: 13ch;
+  }
+
+  .accroche { font-size: 1.15rem; max-width: 48ch; margin: 0; color: #D5F2EE; }
+
+  .vagues {
+    position: absolute;
+    left: 0; bottom: -1px;
+    width: 200%; height: 80px;
+    animation: derive 22s linear infinite;
+  }
+
+  @keyframes derive { to { transform: translateX(-50%); } }
+
+  /* ---------- Filtres ---------- */
+  main { max-width: 1040px; margin: 0 auto; padding: 8px 24px 64px; }
+
+  .barre {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+
+  .barre button {
+    font: inherit;
+    font-weight: 600;
+    padding: 9px 18px;
+    border-radius: 999px;
+    border: 2px solid var(--encre);
+    background: transparent;
+    color: var(--encre);
+    cursor: pointer;
+  }
+
+  .barre button[aria-pressed="true"] { background: var(--encre); color: #fff; }
+  .barre button:hover { background: #D3ECEA; }
+  .barre button[aria-pressed="true"]:hover { background: var(--encre); }
+
+  .compte { margin-left: auto; color: var(--lagon); font-weight: 600; }
+
+  button:focus-visible { outline: 3px solid var(--ruban); outline-offset: 3px; box-shadow: 0 0 0 5px var(--encre); }
+
+  /* ---------- Cartes ---------- */
+  .grille {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 24px;
+  }
+
+  .carte {
+    padding: 0;
+    text-align: left;
+    font: inherit;
+    color: inherit;
+    background: #fff;
+    border: 1px solid #C5E3E0;
+    border-radius: 18px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform .2s ease;
+  }
+
+  .carte:hover { transform: translateY(-5px); }
+
+  .vue { position: relative; aspect-ratio: 8 / 5; background: #CFEFEA; }
+  .vue svg, .vue img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+  .mer {
+    position: absolute;
+    top: 12px; left: 12px;
+    padding: 3px 12px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, .92);
+    color: var(--encre);
+    font-size: .85rem;
+    font-weight: 600;
+  }
+
+  .texte { padding: 16px 18px 20px; }
+
+  .texte h3 {
+    font-family: "Young Serif", Georgia, serif;
+    font-weight: 400;
+    font-size: 1.5rem;
+    margin: 0 0 2px;
+  }
+
+  .region { margin: 0 0 8px; color: var(--lagon); font-weight: 600; font-size: .95rem; }
+  .texte p:last-child { margin: 0; }
+
+  /* ---------- Fiche détaillée ---------- */
+  dialog {
+    width: min(660px, 92vw);
+    padding: 0;
+    border: none;
+    border-radius: 18px;
+    color: var(--encre);
+    overflow: hidden;
+  }
+
+  dialog::backdrop { background: rgba(7, 48, 63, .65); }
+
+  .fiche-vue { aspect-ratio: 16 / 7; }
+  .fiche-vue svg, .fiche-vue img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+  .fiche-corps { padding: 24px 28px 30px; }
+
+  .fiche-corps h2 {
+    font-family: "Young Serif", Georgia, serif;
+    font-weight: 400;
+    font-size: 2rem;
+    margin: 0 0 2px;
+  }
+
+  dl { margin: 18px 0 0; }
+  dt { font-weight: 600; color: var(--lagon); margin-top: 14px; }
+  dd { margin: 2px 0 0; }
+
+  .fermer {
+    position: absolute;
+    top: 12px; right: 12px;
+    width: 40px; height: 40px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .92);
+    color: var(--encre);
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+
+  footer { max-width: 1040px; margin: 0 auto; padding: 0 24px 48px; font-size: .95rem; color: #3E5F6B; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .vagues { animation: none; }
+    .carte { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="titrage">
+    <h1>Les plus belles îles de Thaïlande</h1>
+    <p class="accroche">Treize îles entre la mer d’Andaman et le golfe de Thaïlande : falaises calcaires, lagons turquoise et plages de sable blanc.</p>
+  </div>
+  <svg class="vagues" viewBox="0 0 2880 80" preserveAspectRatio="none" aria-hidden="true">
+    <path id="vague" fill="#EAF7F6" d=""/>
+  </svg>
+</header>
+
+<main>
+  <div class="barre" role="group" aria-label="Filtrer par mer">
+    <button type="button" data-filtre="toutes" aria-pressed="true">Toutes</button>
+    <button type="button" data-filtre="andaman" aria-pressed="false">Mer d’Andaman</button>
+    <button type="button" data-filtre="golfe" aria-pressed="false">Golfe de Thaïlande</button>
+    <span class="compte" id="compte" aria-live="polite"></span>
+  </div>
+  <div class="grille" id="grille"></div>
+</main>
+
+<footer>
+  Les saisons indiquées sont approximatives et changent d’une année à l’autre. Avant de partir, vérifiez la météo, les horaires de bateaux et les règles des parcs marins.
+</footer>
+
+<dialog id="fiche" aria-labelledby="fiche-titre">
+  <button type="button" class="fermer" id="fermer" aria-label="Fermer la fiche">✕</button>
+  <div id="fiche-contenu"></div>
+</dialog>
+
+<script>
+  /* Les îles. Pour ajouter une vraie photo, remplissez "photo" avec le nom
+     d’un fichier image placé dans le même dossier, par exemple "phi-phi.jpg".
+     Si "photo" est vide, une illustration dessinée par le code s’affiche.
+     c = couleurs : ciel haut, ciel bas, mer haut, mer bas, rochers */
+  const iles = [
+    { nom: "Koh Phi Phi", mer: "andaman", region: "Province de Krabi", saison: "Novembre à avril", type: "karst", photo: "",
+      c: ["#FFB88C", "#FFE3B8", "#27C4C0", "#0C7F8E", "#2E4B45"],
+      resume: "Des falaises calcaires qui plongent dans une eau verte et turquoise.",
+      faire: "Faire du snorkeling autour de Phi Phi Leh, monter au point de vue de Phi Phi Don, admirer le coucher de soleil depuis un bateau longtail. L’accès à Maya Bay est réglementé.",
+      profil: "Ceux qui veulent des paysages spectaculaires et une ambiance animée." },
+    { nom: "Koh Lipe", mer: "andaman", region: "Province de Satun", saison: "Novembre à avril", type: "flat", photo: "",
+      c: ["#7FD4F5", "#D6F3FF", "#5FE0D0", "#14A5A0", "#2F7D5A"],
+      resume: "Sable blanc et eau cristalline, à deux pas de la frontière malaisienne.",
+      faire: "Snorkeling sur les récifs de la plage de Pattaya, tour des îlots du parc de Tarutao, marche d’une plage à l’autre.",
+      profil: "Les amateurs de plages de carte postale et de petites îles où l’on circule à pied." },
+    { nom: "Îles Similan", mer: "andaman", region: "Province de Phang Nga", saison: "Novembre à avril (parc fermé en saison des pluies)", type: "hill", photo: "",
+      c: ["#5BB8F0", "#CBEBFF", "#1D9FD6", "#0A5F96", "#6B6A66"],
+      resume: "Des blocs de granit arrondis posés sur une mer limpide, paradis des plongeurs.",
+      faire: "Plongée et snorkeling avec tortues et raies, plages désertes, point de vue sur l’île n° 8 (Koh Similan).",
+      profil: "Les plongeurs, de débutants à confirmés. Pas d’hôtels classiques : on y va en excursion ou en croisière." },
+    { nom: "Koh Lanta", mer: "andaman", region: "Province de Krabi", saison: "Novembre à avril", type: "flat", photo: "",
+      c: ["#F28CA0", "#FFD2B0", "#3FB6C4", "#13788E", "#2F7D5A"],
+      resume: "De longues plages tranquilles et une vieille ville de pêcheurs sur pilotis.",
+      faire: "Visiter Lanta Old Town, explorer le parc national au sud, partir en excursion vers Koh Rok.",
+      profil: "Les familles et ceux qui cherchent le calme sans manquer de services." },
+    { nom: "Koh Kradan", mer: "andaman", region: "Province de Trang", saison: "Novembre à avril", type: "flat", photo: "",
+      c: ["#8ADBF0", "#E6F8FF", "#7BEBDD", "#12B5A8", "#2F7D5A"],
+      resume: "Une petite île au sable très fin, avec des coraux presque devant la plage.",
+      faire: "Snorkeling directement depuis la plage, tour des îles voisines, rien d’autre : c’est le principe.",
+      profil: "Ceux qui veulent se déconnecter, avec peu de logements et peu de monde." },
+    { nom: "Koh Yao Noi", mer: "andaman", region: "Province de Phang Nga", saison: "Novembre à avril", type: "hill", photo: "",
+      c: ["#FFD27A", "#FFF0C9", "#2BAFA6", "#0E6F73", "#3E6B4A"],
+      resume: "Une île de villages, de rizières et de pêche, face aux pitons de la baie de Phang Nga.",
+      faire: "Louer un vélo ou un scooter, kayak entre les îlots calcaires, rencontrer les habitants.",
+      profil: "Les curieux qui préfèrent la vie locale aux grandes plages touristiques." },
+    { nom: "Phuket", mer: "andaman", region: "Province de Phuket", saison: "Novembre à avril", type: "hill", photo: "",
+      c: ["#F7A072", "#FFD9A8", "#2AA7C0", "#0C6784", "#3B6B50"],
+      resume: "La plus grande île du pays : plages variées, vieille ville colorée, excellente base pour explorer.",
+      faire: "Plages de Kata et Nai Harn, vieille ville de Phuket Town, excursions vers la baie de Phang Nga et les îles Phi Phi.",
+      profil: "Ceux qui veulent tout à portée : choix d’hôtels, restaurants, transports." },
+    { nom: "Koh Samui", mer: "golfe", region: "Province de Surat Thani", saison: "Janvier à septembre", type: "flat", photo: "",
+      c: ["#6FC8F0", "#DDF3FF", "#32BFD1", "#0F8AA6", "#2F7D5A"],
+      resume: "Cocotiers, plages animées ou discrètes et temples dorés.",
+      faire: "Plage de Chaweng ou de Lamai, Big Buddha, excursion vers le parc marin d’Ang Thong.",
+      profil: "Les voyageurs qui aiment le confort, des hôtels de tous niveaux et une bonne offre de restaurants." },
+    { nom: "Koh Phangan", mer: "golfe", region: "Province de Surat Thani", saison: "Janvier à septembre", type: "hill", photo: "",
+      c: ["#B79BEA", "#FFC9D9", "#2BB0BF", "#13708A", "#35614A"],
+      resume: "Connue pour la Full Moon Party, mais aussi pour ses baies calmes au nord.",
+      faire: "Plage de Haad Rin pour la fête, cascades de la jungle, bien-être et yoga à Srithanu, criques du nord.",
+      profil: "Les fêtards comme les amateurs de yoga et de nature." },
+    { nom: "Koh Tao", mer: "golfe", region: "Province de Surat Thani", saison: "Février à septembre", type: "hill", photo: "",
+      c: ["#4FB3E8", "#BFE7FF", "#19B3C9", "#0A6F8E", "#5C5A52"],
+      resume: "Petite île de rochers et de baies, l’un des meilleurs endroits pour apprendre à plonger.",
+      faire: "Passer un brevet de plongée, snorkeling dans la baie de Shark Bay, randonnée vers le point de vue de John-Suwan.",
+      profil: "Les futurs plongeurs et les amateurs de snorkeling." },
+    { nom: "Koh Chang", mer: "golfe", region: "Province de Trat", saison: "Novembre à avril", type: "hill", photo: "",
+      c: ["#9ED0E8", "#E3F2EA", "#2E9FB0", "#175F72", "#2D5A40"],
+      resume: "Une grande île montagneuse couverte de forêt tropicale, avec des plages sur la côte ouest.",
+      faire: "Cascades dans la jungle, plage de White Sand, village de pêcheurs de Bang Bao, balade à dos d’éléphant éthique ou kayak.",
+      profil: "Les amoureux de nature qui veulent aussi des plages." },
+    { nom: "Koh Kood", mer: "golfe", region: "Province de Trat", saison: "Novembre à avril", type: "flat", photo: "",
+      c: ["#FFC48A", "#FFE9C7", "#4FD1C0", "#14958F", "#2F7D5A"],
+      resume: "Une île encore préservée, avec des plages presque désertes, des cascades et des mangroves.",
+      faire: "Cascade de Klong Chao, kayak dans la mangrove de Klong Hin, plages du sud-ouest.",
+      profil: "Ceux qui cherchent le calme et le dépaysement, loin des foules." },
+    { nom: "Ang Thong", mer: "golfe", region: "Parc marin, Surat Thani", saison: "Janvier à septembre", type: "karst", photo: "",
+      c: ["#7DD3C8", "#DFF7EE", "#2FC19A", "#0B7F73", "#3A5F4B"],
+      resume: "Un archipel d’une quarantaine d’îles calcaires, avec un lagon d’un vert émeraude.",
+      faire: "Kayak entre les îlots, montée au point de vue de Koh Wua Talap, lagon d’émeraude de Koh Mae Ko.",
+      profil: "Ceux qui aiment les paysages de falaises, en excursion d’une journée depuis Samui ou Phangan." }
+  ];
+
+  /* ---------- Illustration dessinée par le code ---------- */
+  function tour(x, h) {
+    const y = 120 - h;
+    return `<path d="M${x} 126 L${x + 4} ${y + 18} Q${x + 22} ${y - 6} ${x + 42} ${y + 18} L${x + 46} 126Z"/>`;
+  }
+
+  function palmier(x) {
+    return `<g stroke="#5B4A32" stroke-width="3" fill="none"><path d="M${x} 124 Q${x + 4} 98 ${x + 12} 82"/></g>
+      <g stroke="#1D7A52" stroke-width="3" stroke-linecap="round" fill="none">
+        <path d="M${x + 12} 82 q-20 -2 -32 10"/><path d="M${x + 12} 82 q-14 -16 -30 -10"/>
+        <path d="M${x + 12} 82 q6 -18 22 -20"/><path d="M${x + 12} 82 q20 -8 32 4"/>
+        <path d="M${x + 12} 82 q14 4 24 18"/></g>`;
+  }
+
+  function scene(ile, id) {
+    const [s1, s2, m1, m2, roche] = ile.c;
+    let formes = "";
+    if (ile.type === "karst") {
+      formes = `<g fill="${roche}">${tour(30, 78)}${tour(88, 100)}${tour(205, 84)}${tour(262, 58)}</g>`;
+    } else if (ile.type === "hill") {
+      formes = `<path d="M-10 126 Q60 70 130 108 Q200 60 330 126Z" fill="${roche}" opacity=".6"/>
+               <path d="M-10 126 Q70 56 160 108 Q240 84 330 126Z" fill="${roche}"/>`;
+    } else {
+      formes = `<ellipse cx="160" cy="125" rx="100" ry="9" fill="#F5E9C8"/>${palmier(150)}${palmier(95)}`;
+    }
+    const vague = (y) => `<path d="M-20 ${y} q20 -9 40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="2"/>`;
+    return `<svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Illustration de ${ile.nom}">
+      <defs>
+        <linearGradient id="ciel${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${s1}"/><stop offset="1" stop-color="${s2}"/></linearGradient>
+        <linearGradient id="mer${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${m1}"/><stop offset="1" stop-color="${m2}"/></linearGradient>
+      </defs>
+      <rect width="320" height="125" fill="url(#ciel${id})"/>
+      <circle cx="${id % 2 ? 250 : 70}" cy="52" r="22" fill="#FFF1C2" opacity=".9"/>
+      ${formes}
+      <rect y="124" width="320" height="76" fill="url(#mer${id})"/>
+      ${vague(150)}${vague(178)}
+    </svg>`;
+  }
+
+  function visuel(ile, id) {
+    return ile.photo ? `<img src="${ile.photo}" alt="${ile.nom}">` : scene(ile, id);
+  }
+
+  const nomMer = { andaman: "Mer d’Andaman", golfe: "Golfe de Thaïlande" };
+
+  /* ---------- Affichage ---------- */
+  const grille = document.getElementById("grille");
+  const compte = document.getElementById("compte");
+  const fiche = document.getElementById("fiche");
+  const contenu = document.getElementById("fiche-contenu");
+  let filtre = "toutes";
+
+  function afficher() {
+    const liste = iles.map((ile, i) => ({ ile, i })).filter(({ ile }) => filtre === "toutes" || ile.mer === filtre);
+    grille.innerHTML = liste.map(({ ile, i }) => `
+      <button type="button" class="carte" data-i="${i}">
+        <div class="vue">${visuel(ile, i)}<span class="mer">${nomMer[ile.mer]}</span></div>
+        <div class="texte">
+          <h3>${ile.nom}</h3>
+          <p class="region">${ile.region}</p>
+          <p>${ile.resume}</p>
+        </div>
+      </button>`).join("");
+    compte.textContent = liste.length + (liste.length > 1 ? " îles" : " île");
+  }
+
+  document.querySelectorAll("[data-filtre]").forEach((bouton) => {
+    bouton.addEventListener("click", () => {
+      filtre = bouton.dataset.filtre;
+      document.querySelectorAll("[data-filtre]").forEach((b) => b.setAttribute("aria-pressed", b === bouton));
+      afficher();
+    });
+  });
+
+  grille.addEventListener("click", (e) => {
+    const carte = e.target.closest(".carte");
+    if (!carte) return;
+    const i = Number(carte.dataset.i);
+    const ile = iles[i];
+    contenu.innerHTML = `
+      <div class="fiche-vue">${visuel(ile, "d" + i)}</div>
+      <div class="fiche-corps">
+        <h2 id="fiche-titre">${ile.nom}</h2>
+        <p class="region">${ile.region} · ${nomMer[ile.mer]}</p>
+        <p>${ile.resume}</p>
+        <dl>
+          <dt>Saison conseillée</dt><dd>${ile.saison}</dd>
+          <dt>À ne pas manquer</dt><dd>${ile.faire}</dd>
+          <dt>Pour qui</dt><dd>${ile.profil}</dd>
+        </dl>
+      </div>`;
+    fiche.showModal();
+  });
+
+  document.getElementById("fermer").addEventListener("click", () => fiche.close());
+  fiche.addEventListener("click", (e) => { if (e.target === fiche) fiche.close(); });
+
+  /* Vagues animées de l’en-tête : 32 demi-ondulations de 90 px */
+  document.getElementById("vague").setAttribute("d", "M0 40 q45 -34 90 0" + " t90 0".repeat(31) + " V80 H0Z");
+
+  afficher();
+</script>
+</body>
+</html>
